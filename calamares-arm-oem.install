@@ -1,0 +1,27 @@
+post_install() {
+  printf '==> Enabling systemd service\n'
+  printf '    \n'
+  cp /opt/calamares/cleanupoem.service /usr/lib/systemd/system/
+  systemctl enable cleanupoem
+  systemctl enable resize.service
+}
+
+post_update() {
+  post_install
+}
+
+post_remove() {
+  if [ -f /etc/sddm.conf.d/90-autologin.conf ]; then
+    rm /etc/sddm.conf.d/90-autologin.conf
+  elif [ -f /etc/lightdm/lightdm.conf ]; then
+    sed -i s/"autologin-user=oem"/"#autologin-user="/g /etc/lightdm/lightdm.conf
+    sed -i s/"autologin-user-timeout=0"/"#autologin-user-timeout=0"/g /etc/lightdm/lightdm.conf
+    sed -i s/"autologin-session=.*"/"#autologin-session="/g /etc/lightdm/lightdm.conf
+  elif [ -f /usr/bin/sway ]; then
+    sed -i s@'\[initial_session\]\ncommand = "sway --config /etc/greetd/oem-setup"\nuser = "oem"'@''@g /etc//greetd/config.toml
+  elif [ -f /etc/gdm/custom.conf ]; then
+    sed -i s/"\[daemon\]\nAutomaticLogin=oem\nAutomaticLoginEnable=True"/"\[daemon\]"/g /etc/gdm/custom.conf
+  fi
+  # disable resize script
+  systemctl disable resize.service
+}

@@ -18,7 +18,7 @@ post_remove() {
     sed -i s/"autologin-user-timeout=0"/"#autologin-user-timeout=0"/g /etc/lightdm/lightdm.conf
     sed -i s/"autologin-session=.*"/"#autologin-session="/g /etc/lightdm/lightdm.conf
   elif [ -f /usr/bin/sway ]; then
-    sed -i s@'\[initial_session\]\ncommand = "sway --config /etc/greetd/oem-setup"\nuser = "oem"'@''@g /etc//greetd/config.toml
+    sed -i s@'\[initial_session\]\ncommand = "sway --config /etc/greetd/oem-setup"\nuser = "oem"'@''@g /etc/greetd/config.toml
   elif [ -f /etc/gdm/custom.conf ]; then
     sed -i s/"\[daemon\]\nAutomaticLogin=oem\nAutomaticLoginEnable=True"/"\[daemon\]"/g /etc/gdm/custom.conf
   fi

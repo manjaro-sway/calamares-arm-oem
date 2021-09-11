@@ -16,7 +16,7 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-	date +%Y%m%d
+    date +%Y%m%d
 }
 
 package() {

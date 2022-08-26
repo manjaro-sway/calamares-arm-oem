@@ -3,11 +3,11 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname="calamares-arm-oem"
-pkgver=20220105
+pkgver=20220826
 pkgrel=1
 arch=('any')
 pkgdesc="Manjaro ARM OEM Modules"
-depends=('calamares' 'kde-cli-tools' 'manjaro-system')
+depends=('calamares' 'kde-cli-tools' 'manjaro-system' 'qqc2-desktop-style')
 install=calamares-arm-oem.install
 url="https://github.com/Strit/calamares-arm-oem"
 license=('GPL3')
@@ -30,5 +30,6 @@ package() {
     install -Dm644 cleanupoem.service -t "${pkgdir}"/opt/calamares/
     install -Dm644 calamares.desktop -t "${pkgdir}"/etc/skel/.config/autostart/
     install -Dm644 resize.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 manjaro/* -t "${pkgdir}/etc/calamares/branding/manjaro/"
+    install -d "${pkgdir}/etc/calamares/branding/manjaro"
+    cp -a manjaro/* "${pkgdir}/etc/calamares/branding/manjaro/"
 }

@@ -3,11 +3,11 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname="calamares-arm-oem"
-pkgver=20220826
+pkgver=20231028
 pkgrel=1
 arch=('any')
 pkgdesc="Manjaro ARM OEM Modules"
-depends=('calamares' 'kde-cli-tools' 'manjaro-system' 'qqc2-desktop-style')
+depends=('calamares' 'kde-cli-tools' 'manjaro-system' 'qqc2-desktop-style5')
 install=calamares-arm-oem.install
 url="https://github.com/Strit/calamares-arm-oem"
 license=('GPL3')

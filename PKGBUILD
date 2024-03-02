@@ -3,7 +3,7 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname="calamares-arm-oem"
-pkgver=20231028
+pkgver=20240302
 pkgrel=1
 arch=('any')
 pkgdesc="Manjaro ARM OEM Modules"

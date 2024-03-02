@@ -1,0 +1,4 @@
+_extends: manjaro-contrib/.github
+repository:
+  homepage: https://gitlab.manjaro.org/manjaro-arm/packages/extra/calamares-arm-oem.git
+
